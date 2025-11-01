@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <body style="background:#111;color:#eee;text-align:center;font-family:sans-serif;">
+    <h2>Connecting to Twitch...</h2>
+    <script>
+      const hash = window.location.hash;
+      if (hash.includes("access_token")) {
+        fetch("http://127.0.0.1:80" + hash)
+          .then(()=>document.body.innerHTML="<h2>Connected!</h2><p>You can close this tab.</p>")
+          .catch(()=>document.body.innerHTML="<h2>Could not reach local app.</h2><p>Is it running?</p>");
+      } else {
+        document.body.innerHTML="<h2>No token received.</h2>";
+      }
+    </script>
+  </body>
+</html>
